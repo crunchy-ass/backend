@@ -7,8 +7,9 @@ const { GridFSBucket } = require("mongodb");
 const Song = require("./models/Song");
 
 const app = express();
+app.use(cors({ origin: "*" }));
+
 app.use(express.json());
-app.use(cors());
 
 // Env
 const PORT = process.env.PORT || 5000;
@@ -99,3 +100,4 @@ app.get("/api/songs/:id/stream", async (req, res) => {
 // ------------------ START SERVER ------------------
 
 app.listen(PORT, () => console.log(`Server listening on ${PORT}`));
+
